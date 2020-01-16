@@ -18,7 +18,7 @@ public class Q3_ArrayInsertionDemo{
 	public static void main(String[] args){
 		// Your code here
 		int arr1[]= {1,2,3,4,5,6,7,8,9,10};
-		System.out.println("Array before insertion:);
+		System.out.println("Array before insertion:");
 		for (int i=0; i<arr1.length ; i++){
 			System.out.println(arr1[i]);
 		}
@@ -26,7 +26,7 @@ public class Q3_ArrayInsertionDemo{
 		int value= 56;
 		int arr2[] = insertIntoArray(arr1,index,value);
 		System.out.println("Array after insertion of " +Integer.toString(value)
-				   +" position " + Integer.toString(index) )
+				   +" position " + Integer.toString(index) );
 		for (int i=0; i<arr2.length; i++){
 			System.out.println(arr2[i]);
 		}	
