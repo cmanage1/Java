@@ -9,7 +9,7 @@ public class Q3_ArrayInsertionDemo{
 		while (i< newArray.length){
 			if (i==indexToInsert){
 				newArray[i] = valueToInsert;
-				i= i+2;
+				i++;
 			}
 			else{
 			newArray[i] = beforeArray[i];
