@@ -62,10 +62,10 @@ public class Q5{
 		if (position == 0) {
 			fibonacci = 0;
 		} else if (position == 1) {
-			fibonacci = 1;
+			fibonacci = num2;
 		} else {
 			for (int i = 2; i <= position;i++ ) {
-				fibonacci = num2;
+				fibonacci = num2+num; //old sum _ new sum
 				num = num2;
 				num2 = fibonacci;
 			}
