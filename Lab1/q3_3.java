@@ -6,7 +6,7 @@ public class Q3_ArrayInsertionDemo{
 		// Your code here
 		int newArray[]= new int[beforeArray.length+1];
 		int i=0;
-		while (i< newArray.length){
+		while (i<= newArray.length){
 			if (i==indexToInsert){
 				newArray[i] = valueToInsert;
 				i++;
