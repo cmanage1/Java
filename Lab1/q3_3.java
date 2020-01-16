@@ -15,6 +15,7 @@ public class Q3_ArrayInsertionDemo{
 			newArray[i] = beforeArray[i];
 			i++;
 			}
+		}
 		return newArray;
 	}
 
