@@ -7,11 +7,14 @@ public class Q3_ArrayInsertionDemo{
 		int newArray[]= new int[beforeArray.length+1];
 
 		for (int i=0; i< newArray.length;i++){
-			if (i==indexToInsert){
+			if (i<= indexToInsert -1){
+				newArray[i]= beforeArray[i];
+			}
+			else if (i==indexToInsert){
 				newArray[i]= valueToInsert;
 			}
 			else{
-				newArray[i]= beforeArray[i];
+				newArray[i]= beforeArray[i-1];
 			}
 		}
 		return newArray;
@@ -28,9 +31,9 @@ public class Q3_ArrayInsertionDemo{
 		int value= 15;
 		int arr2[] = insertIntoArray(arr1,index,value);
 		System.out.println("Array after insertion of " +Integer.toString(value)
-				   +" position " + Integer.toString(index) );
+				   +" position " + Integer.toString(index) +":");
 		for (int i=0; i<arr2.length; i++){
 			System.out.println(arr2[i]);
-		}	
+		}
 	}
 }
