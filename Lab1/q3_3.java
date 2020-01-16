@@ -4,26 +4,29 @@ public class Q3_ArrayInsertionDemo{
 
 	public static int[] insertIntoArray(int[] beforeArray, int indexToInsert, int valueToInsert){
 		// Your code here
-		int arr[]= new int[11];
+		int newArray[]= new int[beforeArray.length+1];
 		int i=0;
-		while (i< arr.length){
+		while (i< beforeArray.length){
 			if (i==indexToInsert){
-				arr[i] = valueToInsert;
+				beforeArray[i] = valueToInsert;
 				i= i+2;
 			}
-			else i++;
-		return arr;
+			else{
+			newArray[i] = beforeArray[i];
+			i++;
+			}
+		return newArray;
 	}
 
 	public static void main(String[] args){
 		// Your code here
-		int arr1[]= {1,2,3,4,5,6,7,8,9,10};
+		int arr1[]= {1,5,4,7,9,6};
 		System.out.println("Array before insertion:");
 		for (int i=0; i<arr1.length ; i++){
 			System.out.println(arr1[i]);
 		}
-		int index= 4;
-		int value= 56;
+		int index= 3;
+		int value= 15;
 		int arr2[] = insertIntoArray(arr1,index,value);
 		System.out.println("Array after insertion of " +Integer.toString(value)
 				   +" position " + Integer.toString(index) );
