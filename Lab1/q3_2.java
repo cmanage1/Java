@@ -11,11 +11,11 @@ public class Q3_AverageDemo{
 	public static double calculateAverage(double[] values){
 		double result;
 		//your code here
-    double sum = 0.0;
-    for (int i=0; i< values.length ; i++){
-      sum+= values[i];
-    }
-    result= sum/ values.length
+		double sum = 0.0;
+		for (int i=0; i< values.length ; i++){
+			sum+= values[i];
+		}
+		result= sum/ values.length;
 		return result;
-	}
+		}
 }
