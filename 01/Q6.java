@@ -30,7 +30,7 @@ public class Q6{
 		//typical bubble sort
 		while (sorted!= true){
 			sorted = true;
-			for (int i=0; i<notes.length-1 ; i++){
+			for (int i=0; i < notes.length-1 ; i++){
 				if (notes[i] > notes[i+1]){
 					temp = notes[i];
 					notes[i] = notes[i+1];
@@ -39,8 +39,12 @@ public class Q6{
 				}
 			}
 		}
-		//using 5th and 6th element to calculate mean
-		return (notes[4] + notes[5])/2 ;
+		//using middle 2
+		if (notes.length %2 == 0){
+			return (notes[(notes.length/2)-1] + notes[notes.length/2])* (0.5) ;
+		}else{
+			return notes[notes.length/2];
+		}
 
 	}
 

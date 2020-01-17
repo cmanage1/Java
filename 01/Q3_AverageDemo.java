@@ -15,7 +15,6 @@ public class Q3_AverageDemo{
 		for (int i=0; i< values.length ; i++){
 			sum+= values[i];
 		}
-		result= sum/ values.length;
-		return result;
+		return sum/ values.length;
 		}
 }

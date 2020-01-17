@@ -5,9 +5,9 @@ import java.util.*;
 public class Q3_SquareArray{
 
 	public static int[] createArray(int size) {
-        int arr[]= new int[size+1];
+        int arr[]= new int[size];
 
-        for (int i=0; i<= size; i++){
+        for (int i=0; i< size; i++){
             arr[i] = i*i;
         }
         return arr;
@@ -18,8 +18,9 @@ public class Q3_SquareArray{
 		int num = input.nextInt();
 		int arr[]= createArray(num);
 
-		for (int j=0; j<= num; j++){
-			System.out.println("The square of "+  Integer.toString(j)+ " is: " + Integer.toString(arr[j]));
+		for (int j=0; j< num; j++){
+			System.out.println("The square of "+  Integer.toString(j)
+			+ " is: " + Integer.toString(arr[j]));
 		}
 	}
 }

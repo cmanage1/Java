@@ -80,22 +80,4 @@ public class TestL1Q3_ArrayInsertionDemo {
 
     }
 
-    public int[] insertIntoArray(int[] beforeArray, int indexToInsert, int valueToInsert){
-		// Your code here
-		int newArray[]= new int[beforeArray.length+1];
-
-		for (int i=0; i< newArray.length;i++){
-			if (i<= indexToInsert -1){
-				newArray[i]= beforeArray[i];
-			}
-			else if (i==indexToInsert){
-				newArray[i]= valueToInsert;
-			}
-			else{
-				newArray[i]= beforeArray[i-1];
-			}
-		}
-		return newArray;
-    }
-
 }
