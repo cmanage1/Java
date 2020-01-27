@@ -13,30 +13,30 @@ public class TicTacToeGame {
    /**
 	* The board of the game, stored as a one dimension array.
 	*/
-	board;
+	String[] board = new board[9];
 
 
    /**
 	* level records the number of rounds that have been
-	* played so far. 
+	* played so far.
 	*/
-	level;
+	int level;
 
    /**
 	* gameState records the current state of the game.
 	*/
-	gameState;
+	GameState gameState;
 
 
    /**
 	* lines is the number of lines in the grid
 	*/
-	lines;
+	int lines=3;
 
    /**
 	* columns is the number of columns in the grid
 	*/
-	columns;
+	int columns=3;
 
 
    /**
@@ -52,7 +52,7 @@ public class TicTacToeGame {
 	*/
 	public TicTacToeGame(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -67,13 +67,13 @@ public class TicTacToeGame {
   	*/
 	public TicTacToeGame(int lines, int columns){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
    /**
 	* constructor allowing to specify the number of lines
-	* and the number of columns for the game, as well as 
+	* and the number of columns for the game, as well as
 	* the number of cells that must be aligned to win.
    	* @param lines
     *  the number of lines in the game
@@ -84,7 +84,7 @@ public class TicTacToeGame {
   	*/
 	public TicTacToeGame(int lines, int columns, int sizeWin){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -97,7 +97,7 @@ public class TicTacToeGame {
 	*/
 	public int getLines(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -108,7 +108,7 @@ public class TicTacToeGame {
 	*/
 	public int getColumns(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -119,7 +119,7 @@ public class TicTacToeGame {
 	*/
 	public int getLevel(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -130,7 +130,7 @@ public class TicTacToeGame {
 	*/
 	public int getSizeWin(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -141,23 +141,23 @@ public class TicTacToeGame {
 	*/
 	public GameState getGameState(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
    /**
 	* returns the cellValue that is expected next,
-	* in other word, which played (X or O) should 
+	* in other word, which played (X or O) should
 	* play next.
 	* This method does not modify the state of the
 	* game.
-	* @return 
+	* @return
     *  the value of the enum CellValue corresponding
     * to the next expected value.
   	*/
 	public CellValue nextCellValue(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -168,12 +168,12 @@ public class TicTacToeGame {
 	* printed out. The behaviour is then unspecified
    	* @param i
     *  the index of the cell in the array board
-    * @return 
+    * @return
     *  the value at index i in the variable board.
   	*/
 	public CellValue valueAt(int i) {
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -189,18 +189,18 @@ public class TicTacToeGame {
 	* as the state of the game.
 	* To faciliate testing, is is acceptable to keep playing
 	* after a game is already won. If that is the case, the
-	* a message should be printed out and the move recorded. 
+	* a message should be printed out and the move recorded.
 	* the  winner of the game is the player who won first
    	* @param i
-    *  the index of the cell in the array board that has been 
+    *  the index of the cell in the array board that has been
     * selected by the next player
   	*/
 	public void play(int i) {
 
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
-	
+
 	}
 
 
@@ -212,19 +212,19 @@ public class TicTacToeGame {
 	* at index i, the gameState variable was correctly set.
 	* it also assumes that it is only called if the game was
 	* not already finished when the cell at index i was played
-	* (i.e. the game was playing). Therefore, it only needs to 
+	* (i.e. the game was playing). Therefore, it only needs to
 	* check if playing at index i has concluded the game, and if
 	* set the oucome correctly
-	* 
+	*
    	* @param i
-    *  the index of the cell in the array board that has just 
+    *  the index of the cell in the array board that has just
     * been set
   	*/
 
 
 	private void setGameState(int i){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
@@ -233,14 +233,14 @@ public class TicTacToeGame {
    /**
 	* Returns a String representation of the game matching
 	* the example provided in the assignment's description
-	* 
+	*
    	* @return
     *  String representation of the game
   	*/
 
 	public String toString(){
 
-		// YOUR CODE HERE 
+		// YOUR CODE HERE
 
 	}
 
