@@ -1,6 +1,7 @@
 Name: ____
 ID: ____
-Description: All the questions for ______
+Course code: ___
+Lab section: D-1
 
 For my reference..
 
