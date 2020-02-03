@@ -16,9 +16,9 @@ public class StudentInfo {
     public static void display() {
 
         System.out.println("************************************************************");
-        System.out.println("*                                                          *");
-        System.out.println("*                                                          *");
-        System.out.println("*                                                          *");
+        System.out.println("*                  Chethin Manage                          *");
+        System.out.println("*                  ITI1121 - D01                           *");
+        System.out.println("*                    300066367                             *");
         System.out.println("*                                                          *");
         System.out.println("************************************************************");
         System.out.println();

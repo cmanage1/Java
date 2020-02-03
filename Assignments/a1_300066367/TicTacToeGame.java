@@ -1,3 +1,4 @@
+
 /**
  * The class <b>TicTacToeGame</b> is the
  * class that implements the Tic Tac Toe Game.
@@ -13,8 +14,7 @@ public class TicTacToeGame {
    /**
 	* The board of the game, stored as a one dimension array.
 	*/
-	String[] board = new board[9];
-
+	CellValue[] board;
 
    /**
 	* level records the number of rounds that have been
@@ -27,23 +27,22 @@ public class TicTacToeGame {
 	*/
 	GameState gameState;
 
-
    /**
 	* lines is the number of lines in the grid
 	*/
-	int lines=3;
+	int lines;
 
    /**
 	* columns is the number of columns in the grid
 	*/
-	int columns=3;
+	int columns;
 
 
    /**
 	* sizeWin is the number of cell of the same type
 	* that must be aligned to win the game
 	*/
-	sizeWin;
+	int sizeWin;
 
 
    /**
@@ -51,8 +50,17 @@ public class TicTacToeGame {
 	* align 3 cells
 	*/
 	public TicTacToeGame(){
+		lines = 3;
+		columns = 3;
+		sizeWin =3;
+		level= 0;
 
-		// YOUR CODE HERE
+		gameState = GameState.PLAYING;
+		board = new CellValue[9];
+
+		for (int i=0; i<9;i++){
+			board[i] = CellValue.EMPTY;
+		}
 
 	}
 
@@ -66,8 +74,16 @@ public class TicTacToeGame {
     *  the number of columns in the game
   	*/
 	public TicTacToeGame(int lines, int columns){
+		this.lines = lines;
+		this.columns= columns;
+		sizeWin = 3;
+		level=0;
 
-		// YOUR CODE HERE
+		gameState = GameState.PLAYING;
+		this.board = new CellValue[lines*columns];
+		for (int i=0; i< (lines*columns) ; i++){
+			board[i] = CellValue.EMPTY;
+		}
 
 	}
 
@@ -83,22 +99,25 @@ public class TicTacToeGame {
     *  the number of cells that must be aligned to win.
   	*/
 	public TicTacToeGame(int lines, int columns, int sizeWin){
+		this.lines= lines;
+		this.columns= columns;
+		this.sizeWin = sizeWin;
+		level = 0;
 
-		// YOUR CODE HERE
+		gameState = GameState.PLAYING;
+		board= new CellValue[lines*columns];
+		for (int i=0; i<(lines*columns);i++){
+			board[i] = CellValue.EMPTY;
+		}
 
 	}
-
-
-
    /**
 	* getter for the variable lines
 	* @return
 	* 	the value of lines
 	*/
 	public int getLines(){
-
-		// YOUR CODE HERE
-
+		return lines;
 	}
 
    /**
@@ -107,9 +126,7 @@ public class TicTacToeGame {
 	* 	the value of columns
 	*/
 	public int getColumns(){
-
-		// YOUR CODE HERE
-
+		return columns;
 	}
 
    /**
@@ -118,9 +135,7 @@ public class TicTacToeGame {
 	* 	the value of level
 	*/
 	public int getLevel(){
-
-		// YOUR CODE HERE
-
+		return level;
 	}
 
   	/**
@@ -129,9 +144,7 @@ public class TicTacToeGame {
 	* 	the value of sizeWin
 	*/
 	public int getSizeWin(){
-
-		// YOUR CODE HERE
-
+		return sizeWin;
 	}
 
    /**
@@ -140,9 +153,7 @@ public class TicTacToeGame {
 	* 	the value of gameState
 	*/
 	public GameState getGameState(){
-
-		// YOUR CODE HERE
-
+		return gameState;
 	}
 
    /**
@@ -156,9 +167,8 @@ public class TicTacToeGame {
     * to the next expected value.
   	*/
 	public CellValue nextCellValue(){
-
-		// YOUR CODE HERE
-
+		if (level%2==0) return CellValue.X;
+		else return CellValue.O;
 	}
 
    /**
@@ -172,9 +182,7 @@ public class TicTacToeGame {
     *  the value at index i in the variable board.
   	*/
 	public CellValue valueAt(int i) {
-
-		// YOUR CODE HERE
-
+		return board[i];
 	}
 
    /**
@@ -196,10 +204,27 @@ public class TicTacToeGame {
     * selected by the next player
   	*/
 	public void play(int i) {
-
-
-		// YOUR CODE HERE
-
+		if (i>= board.length || i<0){
+			System.out.println("Value should be between " +
+			(board.length - (board.length-1))+" and "+board.length);
+		}
+		else if (valueAt(i) != CellValue.EMPTY){
+			System.out.println("The cell has already been played");
+		}
+		else if (valueAt(i) == CellValue.EMPTY){
+			if (level%2==0) {
+				board[i] = CellValue.X;
+				nextCellValue();
+				setGameState(i);
+				level++;
+			}
+			else {
+				board[i]= CellValue.O;
+				nextCellValue();
+				setGameState(i);
+				level++;
+			}
+		}
 
 	}
 
@@ -220,16 +245,18 @@ public class TicTacToeGame {
     *  the index of the cell in the array board that has just
     * been set
   	*/
-
-
 	private void setGameState(int i){
 
-		// YOUR CODE HERE
+		CellValue topRight = valueAt(i);
+		int topRightCell=1;
 
+		CellValue topLeft = valueAt(getColumns());
+
+		//Win row
+		//Win column
+		//Win diagonal
+		
 	}
-
-
-
    /**
 	* Returns a String representation of the game matching
 	* the example provided in the assignment's description
@@ -237,11 +264,32 @@ public class TicTacToeGame {
    	* @return
     *  String representation of the game
   	*/
-
 	public String toString(){
+		CellValue[][] arr = new CellValue[lines][columns];
+		for (int i=0; i< lines;i++ ){
+			for (int j=0; j< columns ; j++){
+				arr[i][j] = board[(lines*j)+i];
+				}
+		}
 
-		// YOUR CODE HERE
+		int temp=0;
+		String res= "";
 
+		for (int i=0; i< lines; i++){
+			res+="\n";
+			for (int j=0; j<columns; j++){
+				temp+=1;
+				if (temp%columns == 0){
+					res += arr[j][i] +" ";
+				}
+				else{
+					res += arr[j][i] +"|";
+				}
+			}
+			res+="\n";
+			res+= "--".repeat(columns) ;
+ 		}
+		return res;
 	}
 
 }

@@ -7,6 +7,11 @@
  */
 
 enum CellValue {
-    EMPTY, X, O;
-	// YOUR CODE HERE
+    EMPTY{
+        public String toString(){
+            return " ";
+        }
+    },
+    X,
+    O;
 }

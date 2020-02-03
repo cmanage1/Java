@@ -1,10 +1,10 @@
-
+import java.util.*;
 import java.io.Console;
 
 public class TicTacToe{
 
    /**
-     * <b>main</b> of the application. Creates the instance of  TicTacToeGame 
+     * <b>main</b> of the application. Creates the instance of  TicTacToeGame
      * and starts the game. If two parameters lines  and columns
      * are passed, they are used. If the paramters lines, columns
      * and win are passed, they are used.
@@ -19,7 +19,7 @@ public class TicTacToe{
 
         StudentInfo.display();
 
-        Console console = System.console();
+        //Console console = System.console();
         TicTacToeGame game;
         int lines, columns, win;
         lines = 3;
@@ -44,17 +44,47 @@ public class TicTacToe{
                 System.out.println("Invalid argument, using default...");
                 win = 3;
             }
-        } 
+        }
         if (args.length > 3){
             System.out.println("Too many arguments. Only the first 3 are used.");
-        } 
-        
+        }
+
         game = new TicTacToeGame(lines, columns,win);
+        Scanner input= new Scanner(System.in);
 
+        while (game.getGameState() == GameState.PLAYING){
+            System.out.println(game);
 
-        // YOUR CODE HERE
+            if (game.getLevel() %2 == 0 ){
+                System.out.println("X to play: ");
+                int i = input.nextInt();
+                game.play(i-1);
+            }
+            else{
+                System.out.println("O to play: ");
+                int i = input.nextInt();
+                game.play(i-1);
+            }
+        }
 
-
+        switch (game.getGameState()){
+            case PLAYING:{
+                break;
+            }
+            case DRAW:{
+                System.out.println("Result: DRAW");
+                break;
+            }
+            case XWIN:{
+                System.out.println("Result: XWIN");
+                break;
+            }
+            case OWIN:{
+                System.out.println("Result: OWIN");
+                break;
+            }
+        }
+        input.close();
     }
 
 }
