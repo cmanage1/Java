@@ -247,15 +247,12 @@ public class TicTacToeGame {
   	*/
 	private void setGameState(int i){
 
-		CellValue topRight = valueAt(i);
-		int topRightCell=1;
-
-		CellValue topLeft = valueAt(getColumns());
-
 		//Win row
+
 		//Win column
+
 		//Win diagonal
-		
+
 	}
    /**
 	* Returns a String representation of the game matching
