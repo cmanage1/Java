@@ -15,7 +15,7 @@ public class Utils {
     public static String[] findAndReplace( String[] in, String[] what, String[] with ) {
 
         String[] out = null; // The new array to be returned
-	      boolean valid = true; // True if the pre-conditions are satistified
+	    boolean valid = true; // True if the pre-conditions are satistified
 
       	// Testing pre-conditions
 
@@ -23,12 +23,37 @@ public class Utils {
       	    valid = false;
       	} else {
       	    // more or less 16 lines missing
+            for (int i=0;i<in.length;i++){
+                if (in[i] == null){
+                    valid = false;
+                }
+            }
+            if (what.length != with.length){
+                valid = false;
+            }
+            else{
+                for (int j=0; j<what.length; j++){
+                    if (what[j] == null || with[j] == null){
+                        valid= false;
+                    }
+                }
+            }
       	}
 
       	if ( valid ) {
       	    out = new String[ in.length ];
       	    for ( int i=0; i<in.length; i++ ) {
       		      //more or less 10 lines missing
+                boolean flag = false;
+                for( int j=0; j<what.length;j++){
+                    if (in[i].equals(what[j])){
+                        out[i] = with[j];
+                        flag = true;
+                    }
+                }
+                if (flag == false){
+                    out[i] = in[i];
+                }
       	    }
       	}
         // Returning a reference to the newly created array that

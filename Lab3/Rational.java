@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Rational {
 
     private int numerator;
@@ -7,10 +9,17 @@ public class Rational {
 
     public Rational(int numerator) {
 	     // Your code here
+        this(numerator, 1);
     }
 
     public Rational(int numerator, int denominator) {
-	     // Your code here
+        if (denominator < 0){
+            denominator *= (-1);
+            numerator *= (-1);
+        }
+        this.numerator = numerator;
+        this.denominator = denominator;
+        reduce();
     }
 
     // getters
@@ -26,17 +35,30 @@ public class Rational {
     // instance methods
 
     public Rational plus(Rational other) {
-	     // Your code here
+        int tempDenominator = denominator *other.denominator;
+
+        int tempNumerator = numerator * other.denominator;
+        int tempOtherNumerator = other.numerator * denominator;
+        int sum = tempNumerator + tempOtherNumerator;
+
+	    return new Rational(sum, tempDenominator);
     }
 
     public static Rational plus(Rational a, Rational b) {
-    	// Your code here
+    	return a.plus(b);
     }
 
     // Transforms this number into its reduced form
 
     private void reduce() {
-      // Your code here
+      if (numerator ==0){
+          denominator =1;
+      }
+      else{
+          int commonFactor = gcd(Math.abs(numerator), denominator);
+          numerator /= commonFactor;
+          denominator /=commonFactor;
+      }
     }
 
     // Euclid's algorithm for calculating the greatest common divisor
@@ -54,19 +76,22 @@ public class Rational {
     }
 
     public int compareTo(Rational other) {
-      // Your code here
+      int thisNewNum = other.denominator * numerator;
+      int otherNewNum = other.numerator * denominator;
+
+      return (thisNewNum - otherNewNum);
     }
 
     public boolean equals(Rational other) {
-      // Your code here
+     return (numerator ==other.numerator && denominator == other.denominator);
     }
 
     public String toString() {
     	String result;
     	if (denominator == 1) {
-    	    // Your code here
+    	    result = Integer.toString(numerator);
     	} else {
-    	    // Your code here
+    	    result = numerator +"/" +denominator;
     	}
     	return result;
     }
