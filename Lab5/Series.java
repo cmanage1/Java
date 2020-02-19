@@ -1,7 +1,5 @@
 public interface Series {
 
-    public double next(){
-
-    }
+    public double next();
 
 }

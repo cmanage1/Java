@@ -23,13 +23,35 @@ public class Book {
     }
 
     public boolean equals(Object other) {
-        if (other == null){
+        if (other == null || getClass() !=other.getClass()){
             return false;
         }
-        return (author==other.author && title==other.title && year==other.title);
+
+        Book o =(Book) other;
+
+        if (title == null){
+            if (o.title != null) return false;
+        }
+        else if (!title.equals(o.title)) return false;
+
+        if (author ==null){
+            if (o.author != null) return false;
+        }
+        else if (!author.equals(o.author)){
+            return false;
+        }
+
+        if (year == 0){
+            if (o.year != 0 ) return false;
+        }
+        else if ( year != o.year){
+            return false;
+        }
+
+        return true;
     }
 
     public String toString() {
-        return author + " " + title + " " + Integer.toString(year);
+        return author + " : " + title + " : " + Integer.toString(year);
     }
 }

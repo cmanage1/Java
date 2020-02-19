@@ -1,10 +1,13 @@
 public class Arithmetic extends AbstractSeries {
 
-    // instance variables
+    private double tot = 0.0;
+    private double pos = 1.0;
 
     public double next() {
 
-        // implement the method
+        tot += pos;
+        pos += 1.0;
+        return tot;
 
     }
 }

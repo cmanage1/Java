@@ -13,14 +13,17 @@ public class Library {
     }
 
     public void addBook (Book b) {
-        library.add(b);
+        if (b == null) return;
+        else library.add(b);
     }
 
     public void sort() {
-        ArrayList.sort(library, Book);
+        library.sort(new BookComparator());
     }
 
     public void printLibrary() {
-        System.out.println(Arrays.toString(library));
+        for (int i=0; i< library.size() ; i++){
+            System.out.println(library.get(i));
+        }
     }
 }
