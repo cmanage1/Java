@@ -3,12 +3,12 @@
 public class TicTacToe{
 
    /**
-     * <b>main</b> of the application. Creates the instance of  GameController 
+     * <b>main</b> of the application. Creates the instance of  GameController
      * and starts the game. If two parameters line  and column
-     * are passed, they are used. 
+     * are passed, they are used.
      * Otherwise, a default value is used. Defaults values are also
      * used if the paramters are too small (less than 2).
-     * 
+     *
      * @param args
      *            command line parameters
      */
@@ -21,7 +21,7 @@ public class TicTacToe{
         int columns = 3;
         int win = 3;
 
-   
+
         try{
             if (args.length >= 2) {
                 lines = Integer.parseInt(args[0]);
@@ -41,10 +41,10 @@ public class TicTacToe{
                     System.out.println("Invalid argument, using default...");
                     win = 3;
                 }
-            } 
+            }
             if (args.length > 3){
                 System.out.println("Too many arguments. Only the first 3 are used.");
-            } 
+            }
 
         } catch(NumberFormatException e){
             System.out.println("Invalid argument, using default...");
@@ -52,11 +52,9 @@ public class TicTacToe{
             columns  = 3;
             win = 3;
         }
-        
-        Player[] players;
 
-        // YOUR CODE HERE  
+        Player[] players;
+        Scanner input= new Scanner(System.in);
 
     }
-
 }
