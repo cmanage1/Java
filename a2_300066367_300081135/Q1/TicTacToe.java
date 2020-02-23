@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class TicTacToe{
 
@@ -57,12 +57,26 @@ public class TicTacToe{
         HumanPlayer humanuser = new HumanPlayer();
         ComputerRandomPlayer computeruser = new ComputerRandomPlayer();
         Scanner input= new Scanner(System.in);
+        game = new TicTacToeGame(lines, columns, win);
 
         players = new Player[]{humanuser,computeruser};
-        int playersturn = generator.nextInt(2);
+        int playersturn = Utils.generator.nextInt(2);
 
-        while (check == false){
-            if (game.getLevel)
+
+        while (game.getGameState() == GameState.PLAYING){
+            if (game.getLevel() == 0){
+                if (playersturn == 0){
+                    System.out.println(game);
+                    HumanPlayer(game);
+
+                }
+                else if (playersturn == 1){
+                    System.out.println("Player 1s turn");
+                }
+            }
+            else{
+
+            }
         }
 
 

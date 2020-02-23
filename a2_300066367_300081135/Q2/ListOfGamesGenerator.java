@@ -18,23 +18,18 @@ public class ListOfGamesGenerator {
   	*/
 	public static LinkedList<LinkedList<TicTacToeGame>> generateAllGames(int lines, int columns, int winLength){
 
-		// 	2d array
-		LinkedList<TicTacToeGame> games= new LinkedList<TicTacToeGame>();
-
 		LinkedList<LinkedList<TicTacToeGame>> res= new LinkedList<LinkedList<TicTacToeGame>>();
 
 
-		for (int i=0; i< lines*columns; i++){
+		for (int i=0; i<= lines*columns; i++){
+			LinkedList<TicTacToeGame> games= new LinkedList<TicTacToeGame>();
 			TicTacToeGame baseGame = new TicTacToeGame(lines, columns, winLength);
 
 			for (int j=0; j< (lines*columns); j++){
-				TicTacToeGame currentGame = new TicTacToeGame(baseGame, j);
-				currentGame.play(j);
 
-				if (currentGame.getGameState() != GameState.PLAYING){
-					games.add(currentGame);;
-					break;
-				}
+				TicTacToeGame currentGame = new TicTacToeGame(baseGame, j);
+
+				games.add(currentGame);
 
 			}
 			res.add(games);

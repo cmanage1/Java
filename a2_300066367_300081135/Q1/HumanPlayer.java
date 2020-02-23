@@ -1,3 +1,4 @@
+import java.util.*;
 public class HumanPlayer implements Player{
 
     public void play(TicTacToeGame game){
@@ -13,20 +14,21 @@ an input has been provided, it plays in on the game and returns.
 	System.out.println("Enter the cell value you wish to play at: ");
 	Scanner input = new Scanner(System.in);
 	int choice1 = input.nextInt();
+    boolean check = false;
 
 	while (check==false){
 
-	if (choice1 < 0 || choice1 >= (games.lines*games.columns)){
+	if (choice1 < 0 || choice1 >= (game.lines*game.columns)){
 
-    	System.out.println("The value should be between 1 and" + (games.lines*games.columns));
+    	System.out.println("The value should be between 1 and" + (game.lines*game.columns));
 
     }
 
     else if (game.valueAt(choice1) != CellValue.EMPTY){
 
-    	System.out println("This cell has already been played");
+    	System.out.println("This cell has already been played");
     }
-    	
+
     else{
 
 
@@ -36,4 +38,5 @@ an input has been provided, it plays in on the game and returns.
     }
 
     }
+}
 }

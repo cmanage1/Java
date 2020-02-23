@@ -107,7 +107,8 @@ public class TicTacToeGame {
 		this.lines = base.lines;
 		this.sizeWin =  base.sizeWin;
 		this.board = base.board;
-		next++;
+		this.gameState = base.getGameState();
+		play(next);
 	}
 
 
