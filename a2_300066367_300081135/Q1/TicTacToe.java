@@ -54,7 +54,12 @@ public class TicTacToe{
         }
 
         Player[] players;
+        HumanPlayer humanuser = new HumanPlayer();
+        ComputerRandomPlayer computeruser = new ComputerRandomPlayer();
         Scanner input= new Scanner(System.in);
+
+        players = new Player[]{humanuser,computeruser};
+        
 
     }
 }
