@@ -59,7 +59,12 @@ public class TicTacToe{
         Scanner input= new Scanner(System.in);
 
         players = new Player[]{humanuser,computeruser};
-        
+        int playersturn = generator.nextInt(2);
+
+        while (check == false){
+            if (game.getLevel)
+        }
+
 
     }
 }
