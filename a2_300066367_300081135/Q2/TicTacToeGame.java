@@ -106,8 +106,14 @@ public class TicTacToeGame {
 		this.columns = base.columns;
 		this.lines = base.lines;
 		this.sizeWin =  base.sizeWin;
-		this.board = base.board;
+		this.board = new CellValue[base.lines*base.columns];
+
+		for (int j=0; j< base.lines*base.columns ;j++){
+			this.board[j] = base.valueAt(j);
+		}
+
 		this.gameState = base.getGameState();
+
 		play(next);
 	}
 

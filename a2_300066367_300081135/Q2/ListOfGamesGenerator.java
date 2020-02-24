@@ -19,22 +19,38 @@ public class ListOfGamesGenerator {
 	public static LinkedList<LinkedList<TicTacToeGame>> generateAllGames(int lines, int columns, int winLength){
 
 		LinkedList<LinkedList<TicTacToeGame>> res= new LinkedList<LinkedList<TicTacToeGame>>();
+		TicTacToeGame baseGame = new TicTacToeGame(lines, columns, winLength);
 
 
-		for (int i=0; i<= lines*columns; i++){
-			LinkedList<TicTacToeGame> games= new LinkedList<TicTacToeGame>();
-			TicTacToeGame baseGame = new TicTacToeGame(lines, columns, winLength);
+		boolean flag = true; //will be false when no playing games can be generated
 
-			for (int j=0; j< (lines*columns); j++){
+		int levelCounter = 0;
 
-				TicTacToeGame currentGame = new TicTacToeGame(baseGame, j);
-				//System.out.println(currentGame);
+		while (flag){
 
-				games.add(currentGame);
+			LinkedList<TicTacToeGame> levels= new LinkedList<TicTacToeGame>();
+			levels.add(baseGame);
+
+			int i=0;
+			while (i< levels.size() ){
+
+				if (baseGame.valueAt(i) == CellValue.EMPTY){
+					TicTacToeGame currentGame = new TicTacToeGame(baseGame, i);
+					if (!(currentGame.equals(baseGame)) ){
+						levels.add(currentGame);
+						i++;
+					}
+				}
 
 			}
-			//System.out.println("This is the end of level" + Integer.toString(i) );
-			res.add(games);
+
+			if (levels.size() == 0){
+				flag = false;
+			}
+			else{
+				res.add(levels);
+				levelCounter++;
+			}
 		}
 
 		return res;

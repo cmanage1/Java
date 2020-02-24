@@ -16,9 +16,9 @@ public class StudentInfo {
     public static void display() {
 
         System.out.println("************************************************************");
+        System.out.println("*            Kaityln DomPaul 300081135                     *");
         System.out.println("*                                                          *");
-        System.out.println("*                                                          *");
-        System.out.println("*                                                          *");
+        System.out.println("*           Chethin Manage 300066367                       *");
         System.out.println("*                                                          *");
         System.out.println("************************************************************");
         System.out.println();
