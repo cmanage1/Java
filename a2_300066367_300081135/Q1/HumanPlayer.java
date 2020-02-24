@@ -11,9 +11,10 @@ the user for a valid input, reusing the code that was in the main of the class T
 an input has been provided, it plays in on the game and returns.
 */
 
-    	System.out.println("Enter the cell value you wish to play at: ");
+    	
     	Scanner input = new Scanner(System.in);
     	int choice1 = input.nextInt();
+        choice1--;
         boolean check = false;
 
     	while (check==false){
@@ -21,18 +22,20 @@ an input has been provided, it plays in on the game and returns.
         	if (choice1 < 0 || choice1 >= (game.lines*game.columns)){
 
             	System.out.println("The value should be between 1 and " + (game.lines*game.columns));
+                break;
 
             }
 
             else if (game.valueAt(choice1) != CellValue.EMPTY){
 
-            	System.out.println("This cell has already been played");
+            	System.out.println("This cell has already been played.");
+                break;
             }
 
             else{
 
 
-            	game.play(choice1-1);
+            	game.play(choice1);
             	check=true;
 
             }

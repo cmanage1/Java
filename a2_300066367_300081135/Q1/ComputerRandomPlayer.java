@@ -6,26 +6,21 @@ public class ComputerRandomPlayer implements Player{
 
     	while(check==false){
 
-    	int choice2 = Utils.generator.nextInt(game.lines*game.columns);
+        	int choice2 = Utils.generator.nextInt(game.lines*game.columns);
 
-    	if (choice2 < 0 || choice2 >= (game.lines*game.columns)){
+        	if (game.valueAt(choice2) != CellValue.EMPTY){
 
-    		System.out.println("The value should be between 1 and" + (game.lines*game.columns));
+        		//System.out.println("This cell has already been played");
+                ;
+        	}
 
-    	}
+        	else{
 
-    	else if (game.valueAt(choice2) != CellValue.EMPTY){
-
-    		System.out.println("This cell has already been played");
-    	}
-
-    	else{
-
-    		game.play(choice2);
-    		check=true;
+        		game.play(choice2);
+        		check=true;
 
 
-    	}
+        	}
 
     }
 

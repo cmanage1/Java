@@ -69,8 +69,8 @@ public class TicTacToe{
            
                 if (game.getLevel()%2==0){
                         System.out.println("Player 1's turn. ");
-                        System.out.println("X to play: ");
                         System.out.println(game);
+                        System.out.println("X to play: ");
                         HumanPlayer humanPlayer= new HumanPlayer();
                         humanPlayer.play(game);                
 
@@ -90,7 +90,6 @@ public class TicTacToe{
 
                 if (game.getLevel()%2==0){
                         System.out.println("Player 1's turn. ");
-                        System.out.println(game);
                         ComputerRandomPlayer computerPlayer= new ComputerRandomPlayer();
                         computerPlayer.play(game);                
 
@@ -98,10 +97,16 @@ public class TicTacToe{
                 else{
                     if (game.getLevel()%2 != 0){
                             System.out.println("Player 2's turn. ");
+                            System.out.println(game);
                             System.out.println("O to play: ");
                             HumanPlayer humanPlayer= new HumanPlayer();
                             humanPlayer.play(game);
+                    }   
+                }            
             }               
+        
         }
+    
     }
+
 }
