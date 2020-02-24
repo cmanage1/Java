@@ -106,6 +106,16 @@ public class TicTacToe{
             }               
         
         }
+        System.out.println(game);
+        switch (game.getGameState()){
+            case PLAYING:{
+                break;
+            }
+
+            case DRAW:{
+                System.out.println
+            }
+        }
     
     }
 
