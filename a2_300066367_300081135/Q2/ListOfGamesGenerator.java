@@ -28,12 +28,12 @@ public class ListOfGamesGenerator {
 			for (int j=0; j< (lines*columns); j++){
 
 				TicTacToeGame currentGame = new TicTacToeGame(baseGame, j);
-				System.out.println(currentGame);
+				//System.out.println(currentGame);
 
 				games.add(currentGame);
 
 			}
-			System.out.println("This is the end of level" + Integer.toString(i) );
+			//System.out.println("This is the end of level" + Integer.toString(i) );
 			res.add(games);
 		}
 
