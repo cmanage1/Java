@@ -48,42 +48,60 @@ public class TicTacToe{
         if (args.length > 3){
             System.out.println("Too many arguments. Only the first 3 are used.");
         }
+        boolean flag = true;
+        while (flag){
+            game = new TicTacToeGame(lines, columns,win);
+            Scanner input= new Scanner(System.in);
 
-        game = new TicTacToeGame(lines, columns,win);
-        Scanner input= new Scanner(System.in);
+            while (game.getGameState() == GameState.PLAYING){
+                System.out.println(game);
 
-        while (game.getGameState() == GameState.PLAYING){
-            System.out.println(game);
+                if (game.getLevel() %2 == 0 ){
+                    System.out.println("X to play: ");
+                    int i = input.nextInt();
+                    game.play(i-1);
+                }
+                else{
+                    System.out.println("O to play: ");
+                    int i = input.nextInt();
+                    game.play(i-1);
+                }
+            }
 
-            if (game.getLevel() %2 == 0 ){
-                System.out.println("X to play: ");
-                int i = input.nextInt();
-                game.play(i-1);
+            switch (game.getGameState()){
+                case PLAYING:{
+                    break;
+                }
+                case DRAW:{
+                    System.out.println("Result: DRAW");
+                    break;
+                }
+                case XWIN:{
+                    System.out.println("Result: XWIN");
+                    break;
+                }
+                case OWIN:{
+                    System.out.println("Result: OWIN");
+                    break;
+                }
+            }
+
+            Char response;
+            System.out.prinlnt("Play again (Y)?:");
+            response = input.nextString();
+
+            if (response == 'n' || response == 'N'){
+                flag = false;
+            }
+            else if (response =='y' || response == 'Y'){
+                ;
             }
             else{
-                System.out.println("O to play: ");
-                int i = input.nextInt();
-                game.play(i-1);
+                System.out.println("Invalid input, quitting game..")
+                flag = false;
             }
         }
 
-        switch (game.getGameState()){
-            case PLAYING:{
-                break;
-            }
-            case DRAW:{
-                System.out.println("Result: DRAW");
-                break;
-            }
-            case XWIN:{
-                System.out.println("Result: XWIN");
-                break;
-            }
-            case OWIN:{
-                System.out.println("Result: OWIN");
-                break;
-            }
-        }
         input.close();
     }
 

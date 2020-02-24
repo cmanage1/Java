@@ -128,8 +128,6 @@ public class TicTacToeGame {
 		else{
 			return false;
 		}
-
-
 	}
 
    /**

@@ -53,70 +53,101 @@ public class TicTacToe{
             win = 3;
         }
 
-        Player[] players;
-        HumanPlayer humanUser = new HumanPlayer();
-        ComputerRandomPlayer computerUser = new ComputerRandomPlayer();
-        Scanner input= new Scanner(System.in);
-        game = new TicTacToeGame(lines, columns, win);
+        boolean flag = true;
+        while (flag){
 
-        players = new Player[]{humanUser,computerUser};
-        int playersTurn = Utils.generator.nextInt(2);
+            Player[] players;
+            HumanPlayer humanUser = new HumanPlayer();
+            ComputerRandomPlayer computerUser = new ComputerRandomPlayer();
+            Scanner input= new Scanner(System.in);
+            game = new TicTacToeGame(lines, columns, win);
+
+            players = new Player[]{humanUser,computerUser};
+            int playersTurn = Utils.generator.nextInt(2);
 
 
 
-        while (game.getGameState() == GameState.PLAYING){
-            if (playersTurn==0){
-           
-                if (game.getLevel()%2==0){
-                        System.out.println("Player 1's turn. ");
-                        System.out.println(game);
-                        System.out.println("X to play: ");
-                        HumanPlayer humanPlayer= new HumanPlayer();
-                        humanPlayer.play(game);                
+            while (game.getGameState() == GameState.PLAYING){
+                if (playersTurn==0){
 
+                    if (game.getLevel()%2==0){
+                            System.out.println("Player 1's turn. ");
+                            System.out.println(game);
+                            System.out.println("X to play: ");
+                            HumanPlayer humanPlayer= new HumanPlayer();
+                            humanPlayer.play(game);
+
+                    }
+                    else{
+                        if (game.getLevel()%2 != 0){
+                                System.out.println("Player 2's turn. ");
+                                ComputerRandomPlayer computerPlayer= new ComputerRandomPlayer();
+                                computerPlayer.play(game);
+
+                        }
+
+                    }
                 }
+
                 else{
-                    if (game.getLevel()%2 != 0){
+
+                    if (game.getLevel()%2==0){
                             System.out.println("Player 2's turn. ");
                             ComputerRandomPlayer computerPlayer= new ComputerRandomPlayer();
                             computerPlayer.play(game);
 
                     }
-
+                    else{
+                        if (game.getLevel()%2 != 0){
+                                System.out.println("Player 1's turn. ");
+                                System.out.println(game);
+                                System.out.println("O to play: ");
+                                HumanPlayer humanPlayer= new HumanPlayer();
+                                humanPlayer.play(game);
+                        }
+                    }
                 }
+
+            }
+            System.out.println("Game Over");
+            System.out.println(game);
+
+
+            switch (game.getGameState()){
+                    case PLAYING:{
+                        break;
+                    }
+                    case DRAW:{
+                        System.out.println("Result: DRAW");
+                        break;
+                    }
+                    case XWIN:{
+                        System.out.println("Result: XWIN");
+                        break;
+                    }
+                    case OWIN:{
+                        System.out.println("Result: OWIN");
+                        break;
+                    }
             }
 
+            String response = "";
+            System.out.println("Play again (Y)?:");
+            response = input.next();
+
+            if (response.equals("n") || response.equals("N") ){
+                flag = false;
+            }
+            else if (response.equals("y") || response.equals("Y") ){
+                ;
+            }
             else{
-
-                if (game.getLevel()%2==0){
-                        System.out.println("Player 1's turn. ");
-                        ComputerRandomPlayer computerPlayer= new ComputerRandomPlayer();
-                        computerPlayer.play(game);                
-
-                }
-                else{
-                    if (game.getLevel()%2 != 0){
-                            System.out.println("Player 2's turn. ");
-                            System.out.println(game);
-                            System.out.println("O to play: ");
-                            HumanPlayer humanPlayer= new HumanPlayer();
-                            humanPlayer.play(game);
-                    }   
-                }            
-            }               
-        
-        }
-        System.out.println(game);
-        switch (game.getGameState()){
-            case PLAYING:{
-                break;
+                System.out.println("Invalid input, quitting game..");
+                flag = false;
             }
 
-            case DRAW:{
-                System.out.println
-            }
         }
-    
+
     }
 
 }

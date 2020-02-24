@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 
 public class TicTacToe{
-	
+
 
 	public static void main(String[] args){
 
@@ -11,7 +11,7 @@ public class TicTacToe{
         int columns = 3;
         int win = 3;
 
-   
+
         try{
             if (args.length >= 2) {
                 lines = Integer.parseInt(args[0]);
@@ -31,17 +31,17 @@ public class TicTacToe{
                     System.out.println("Invalid argument, using default...");
                     win = 3;
                 }
-            } 
+            }
             if (args.length > 3){
                 System.out.println("Too many arguments. Only the first 3 are used.");
-            } 
+            }
 
         } catch(NumberFormatException e){
             System.out.println("Invalid argument, using default...");
             lines   = 3;
             columns  = 3;
             win = 3;
-        }		
+        }
 
         LinkedList<LinkedList<TicTacToeGame>> allGames;
 		allGames = ListOfGamesGenerator.generateAllGames(lines,columns,win);
