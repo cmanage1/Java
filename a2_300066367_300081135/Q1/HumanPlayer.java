@@ -11,32 +11,32 @@ the user for a valid input, reusing the code that was in the main of the class T
 an input has been provided, it plays in on the game and returns.
 */
 
-	System.out.println("Enter the cell value you wish to play at: ");
-	Scanner input = new Scanner(System.in);
-	int choice1 = input.nextInt();
-    boolean check = false;
+    	System.out.println("Enter the cell value you wish to play at: ");
+    	Scanner input = new Scanner(System.in);
+    	int choice1 = input.nextInt();
+        boolean check = false;
 
-	while (check==false){
+    	while (check==false){
 
-	if (choice1 < 0 || choice1 >= (game.lines*game.columns)){
+        	if (choice1 < 0 || choice1 >= (game.lines*game.columns)){
 
-    	System.out.println("The value should be between 1 and" + (game.lines*game.columns));
+            	System.out.println("The value should be between 1 and " + (game.lines*game.columns));
 
+            }
+
+            else if (game.valueAt(choice1) != CellValue.EMPTY){
+
+            	System.out.println("This cell has already been played");
+            }
+
+            else{
+
+
+            	game.play(choice1-1);
+            	check=true;
+
+            }
+
+        }
     }
-
-    else if (game.valueAt(choice1) != CellValue.EMPTY){
-
-    	System.out.println("This cell has already been played");
-    }
-
-    else{
-
-
-    	game.play(choice1);
-    	check=true;
-
-    }
-
-    }
-}
 }
