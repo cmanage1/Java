@@ -36,7 +36,15 @@ public class DynamicArrayStack<E> implements Stack<E> {
         // Your code here.
         E saved = elems[ --top ];
 
-        elems[ top ] = null; // scrub the memory!
+        elems[ top ] = null;
+
+        if (elems.length - (top +1 ) == DEFAULT_INC){
+            E[] arr = (E[]) new Object[elems.length-DEFAULT_INC];
+            for (int i=0; i<top; i++){
+                arr[i]= elems[i];
+            }
+            elems = arr;
+        }
 
         return saved;
     }
@@ -48,6 +56,14 @@ public class DynamicArrayStack<E> implements Stack<E> {
         // Your code here.
 
         elems[ top++ ] = element;
+        if (top == elems.length){
+            E[] arr = (E[]) new Object[top+DEFAULT_INC];
+            for (int i=0; i<top; i++){
+                arr[i]= elems[i];
+            }
+            elems = arr;
+        }
+
     }
 
     @SuppressWarnings( "unchecked" )
