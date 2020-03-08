@@ -32,7 +32,12 @@ public class Exercise1 {
             throwException(exceptionNumber);
         }
         // YOUR CODE HERE
+        catch(Exception e){
+            return e.toString() ;
+        }
+        
         return "NoException";
+
     }
 
     public static void main(String[] args) {

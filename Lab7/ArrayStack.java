@@ -34,8 +34,13 @@ public class ArrayStack<E> implements Stack<E> {
     public E peek() {
 
         // pre-conditions: ! isEmpty()
+        try{
+            return elems[ top-1 ];
+        }
+        catch( IndexOutOfRange e){
+            throw new EmptyArrayStackException("Index out of range"); 
+        }
 
-        return elems[ top-1 ];
     }
 
     // Removes and returns the top element of this stack
@@ -72,5 +77,9 @@ public class ArrayStack<E> implements Stack<E> {
     @SuppressWarnings( "unchecked" )
 
     // Add clear method.
+    public void clear(){
+        elems = (E[]) new Object[capacity];
+        top = 0;
+    }
 
 }

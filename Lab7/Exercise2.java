@@ -11,6 +11,7 @@ public class Exercise2{
             System.out.println(e.getMessage());
             System.out.println("You are missing " + e.getMissingAmount() + "$");
         }
+        
     }
 
 }
