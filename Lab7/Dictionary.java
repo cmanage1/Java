@@ -52,6 +52,10 @@ public class Dictionary implements Map<String, Integer> {
         boolean flag= false;
         int pointer = count-1;
 
+        if (key == null) {
+    		throw new NullPointerException("key or value is null");
+    	}
+
         while (pointer >=0 && flag== false){
             if ( (elems[pointer]).getKey().equals(key)) {
                 flag = true;
@@ -88,6 +92,11 @@ public class Dictionary implements Map<String, Integer> {
         boolean flag= false;
         int pointer= count-1;
 
+        if (pointer < getCapacity() ) {
+    		throw new IndexOutOfBoundsException("index out of bounds");
+    	}
+        
+
         while (pointer>= 0 && flag ==false){
             if ((elems[pointer]).getKey().equals(key)){
                 flag = true;
@@ -106,6 +115,10 @@ public class Dictionary implements Map<String, Integer> {
         /* Your code here. */
         boolean flag = false;
         int pointer = count-1;
+
+        if (pointer < getCapacity() ) {
+    		throw new IndexOutOfBoundsException();
+    	}
 
         while (pointer>= 0 && flag ==false){
             if ((elems[pointer]).getKey().equals(key)){

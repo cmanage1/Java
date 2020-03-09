@@ -33,9 +33,9 @@ public class Exercise1 {
         }
         // YOUR CODE HERE
         catch(Exception e){
-            return e.toString() ;
+            return e.getClass().getSimpleName();
         }
-        
+
         return "NoException";
 
     }
