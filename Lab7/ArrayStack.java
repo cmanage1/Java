@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class ArrayStack<E> implements Stack<E> {
 
 
@@ -30,15 +32,14 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     // Returns the top element of this ArrayStack without removing it
-
     public E peek() { //Need EmptyArrayStackException
 
-        // pre-conditions: ! isEmpty()
-        try{
-            return elems[ top-1 ];
+        if (isEmpty() ){
+            throw new EmptyStackException();
         }
-        catch( Exception e){
-            throw new EmptyStackException("Index out of range");
+
+        else{
+            return elems[ top-1 ];
         }
 
     }
@@ -47,7 +48,9 @@ public class ArrayStack<E> implements Stack<E> {
 
     public E pop() {  //Need EmptyArrayStackException
 
-        // pre-conditions: ! isEmpty()
+        if (isEmpty() ){
+            throw new EmptyStackException();
+        }
 
         // *first* decrements top, then access the value!
         E saved = elems[ --top ];
@@ -61,9 +64,11 @@ public class ArrayStack<E> implements Stack<E> {
 
     public void push( E element ) { //Need FullStackException
 
-        // Pre-condition: the stack is not full
-        // *first* stores the element at position top, then increments top
 
+        // *first* stores the element at position top, then increments top
+        if (elems.length == top){
+            throw new FullStackException("stack is full");
+        }
         elems[ top++ ] = element;
     }
 

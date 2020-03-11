@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class DynamicArrayStack<E> implements Stack<E> {
 
     // Instance variables
@@ -11,6 +13,8 @@ public class DynamicArrayStack<E> implements Stack<E> {
     // Constructor
     public DynamicArrayStack( int capacity ) {
         // Your code here.
+        this.elems = (E[]) new Object[capacity];
+        this.top = 0;
     }
 
     // Gets current capacity of the array
@@ -25,7 +29,12 @@ public class DynamicArrayStack<E> implements Stack<E> {
 
     // Returns the top element of this ArrayStack without removing it
     public E peek() {
-        return elems[ top-1 ];
+        if (isEmpty()){
+            throw new EmptyStackException();
+        }
+        else{
+            return elems[ top-1 ];
+        }
     }
 
     @SuppressWarnings( "unchecked" )
@@ -33,6 +42,14 @@ public class DynamicArrayStack<E> implements Stack<E> {
     // Removes and returns the top element of this stack
     public E pop() {
         // Your code here.
+        if (isEmpty()){
+            throw new EmptyStackException();
+        }
+        E saved = elems[--top];
+
+        elems[top] = null;
+
+        return saved;
     }
 
     @SuppressWarnings( "unchecked" )
