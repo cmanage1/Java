@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.io.Console;
+import java.util.Arrays; //REMOVE LATER
 
 public class Utils {
 	public static final Random generator = new Random();
@@ -42,8 +43,20 @@ public class Utils {
 
     public static void rotate(int lines, int columns, int[] transformedBoard){
 
+		int[] temp = new int[lines*columns];
 
-            // YOUR CODE HERE
+		for (int i=0; i< lines*columns; i++){
+			int index = i+ 2*(i+1)- i/lines; //this determines next index to place
+			index = index%(lines*columns); //this makes sure it's never out of ranage
+
+			temp[index] =  transformedBoard[i];
+
+		}
+
+		for (int j=0; j< lines*columns; j++){
+			transformedBoard[j] = temp[j];
+		}
+
 
     }
 
@@ -62,7 +75,7 @@ public class Utils {
      * for which lines = 3 and columns = 3 is represented by the array
      * transformedBoard = {1,2,3,4,5,6,7,8,9}
      *
-     * the method transforms it into the game   
+     * the method transforms it into the game
      *
      * 7 | 8 | 9
      * ----------
@@ -81,8 +94,41 @@ public class Utils {
      */
 
     public static  void horizontalFlip(int lines, int columns, int[] transformedBoard){
+		//Flipping across horixzontal axis
+		int[] temp = new int[lines*columns];
 
-        // YOUR CODE HERE
+
+		if (lines %2 ==0){// for even lines
+			for (int i =0; i< lines*columns ; i++ ){
+				if (i>= ((lines*columns)/2) ){ //i>= 10 (start 10)
+					temp[i] = transformedBoard[i- (lines*columns/2)];
+				}
+				if (i < ((lines*columns)/2 ) ){
+					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
+				}
+			}
+		}
+
+		else{ //for non even lines
+			for (int i =0; i< lines*columns ; i++ ){
+				if ( i == (lines/2) * columns  ){
+					i+= (columns-1);//make a private class to fill this?
+				}
+
+				else if (i>= ((lines*columns)/2) ){ //i>= 10 (start 10)
+					temp[i] = transformedBoard[i- (lines*columns)/2];
+				}
+
+				else if (i < ((lines*columns)/2 ) ){
+					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
+				}
+				System.out.println("i= " +i  +" Value: " + temp[i]);
+			}
+		}
+
+		for (int i=0; i< lines*columns ; i++){ //copying to final board
+			transformedBoard[i] = temp[i];
+		}
     }
 
    /**
@@ -99,7 +145,7 @@ public class Utils {
      * for which lines = 3 and columns = 3 is represented by the array
      * transformedBoard = {1,2,3,4,5,6,7,8,9}
      *
-     * the method transforms it into the game   
+     * the method transforms it into the game
      *
      * 3 | 2 | 1
      * ----------
@@ -118,7 +164,7 @@ public class Utils {
      */
 
     public static  void verticalFlip(int lines, int columns, int[] transformedBoard){
- 
+
         // YOUR CODE HERE
 
     }
@@ -142,13 +188,13 @@ public class Utils {
     	if(lines == columns){
     		for(int i = 0; i < 4; i++) {
 		    	rotate(lines,columns,test);
-		    	System.out.println("ROT => " + java.util.Arrays.toString(test));    			
+		    	System.out.println("ROT => " + java.util.Arrays.toString(test));
     		}
     	}
     }
 
     public static void main(String[] args){
-    	int[] test;
+		int[] test;
     	int lines, columns;
 
     	test(2,2);
