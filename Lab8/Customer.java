@@ -8,13 +8,13 @@ public class Customer{
     private final int MAX_NUM_ITEMS =25;
 
     public Customer(int time){
-        Random generator;
-        generator = new Random();
+        Random random;
+        random = new Random();
 
-        this.numberOfItems = generator.nextInt(MAX_NUM_ITEMS-1)+1;
+        this.numberOfItems = random.nextInt(MAX_NUM_ITEMS-1)+1;
 
         this.arrivalTime = time;
-        this.initialNumberOfItems=numberOfItems;
+        this.initialNumberOfItems= numberOfItems;
     }
 
     public int getArrivalTime(){
@@ -30,6 +30,6 @@ public class Customer{
     }
 
     public void serve(){
-        numberOfItems--;
+        numberOfItems-1;
     }
 }
