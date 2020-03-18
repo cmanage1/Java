@@ -1,4 +1,4 @@
-public class Pair {
+public class Pair1 {
 
     private final String key;
     private Integer value;
