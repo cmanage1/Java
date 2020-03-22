@@ -166,6 +166,14 @@ public class Utils {
     public static  void verticalFlip(int lines, int columns, int[] transformedBoard){
 
         // YOUR CODE HERE
+        for ( int a=0; a<columns/2;a++){
+            int b = columns-a-1;
+            for ( int c=0; c<lines;c++){
+                int d = transformedBoard[a+(columns*c)];
+                transformedBoard[a+(columns*c)] = transformedBoard [ b+(columns*c)];
+                transformedBoard[b+(columns*c)]=d;
+            }
+        }
 
     }
 
