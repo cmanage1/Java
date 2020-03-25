@@ -12,6 +12,7 @@ public class PlayListManager{
     public PlayListManager( String in, String out ) {
     
         // Taking of the data structures that will be storing our data
+        
 
         try {
             this.model = PlayList.getSongsFromFile( in );

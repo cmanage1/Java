@@ -1,15 +1,30 @@
 import java.io.*;
+import java.util.Scanner;
+
+import jdk.internal.org.jline.utils.InputStreamReader;
 
 public class SecretMessage {
 
     public static void encrypt( String inputFilem, String outputFile, int key ) throws IOException, FileNotFoundException {
 
-        InputStreamReader input = null;
-		OutputStreamWriter out = null;
-        throw new UnsupportedOperationException("SecretMessage encrypt not implemented");
-        // YOUR CODE HERE (remove the exception)
-
+        InputStreamReader input = new InputStreamReader(new FileInputStream(inputFilem));
         
+
+        OutputStream output = new FileOutputStream("data");
+        
+        File f = new File(outputFile);
+        OutputStream output = new FileOutputStream(f);
+
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(outputFile));
+
+        String encryptedMessege= new String();
+        
+        out.write(encryptedMessege);
+
+
+
+
+        // YOUR CODE HERE (remove the exception)
 
     }
 	
