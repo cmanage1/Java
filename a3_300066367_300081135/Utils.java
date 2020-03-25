@@ -200,8 +200,8 @@ public class Utils {
     }
 
     public static void main(String[] args){
-		  int[] test;
-    	int lines, columns;
+		  //int[] test;
+    	//int lines, columns;
 
     	test(2,2);
     	test(2,3);

@@ -8,7 +8,7 @@ public class MyTesting{
 
         int lines; int columns;
         int[] testArray;
-        
+        /*
         //**************************TESTING ROTATE******************************************* 
         //TEST 2 AND 2
         lines =2; columns=2;
@@ -48,7 +48,7 @@ public class MyTesting{
         }
 
         
-        /*
+        
         //**********************TESTING V FLIP********************************************************* 
         // TEST 2 AND 2
         lines = 2;
@@ -171,6 +171,26 @@ public class MyTesting{
         Utils.horizontalFlip(lines, columns, testArray);
         System.out.println("HF => " + java.util.Arrays.toString(testArray));
         */
+
+        // **********************TESTINg EQUALs with Sym FLIP********************************************************
+        TicTacToeGame g;
+        TicTacToeGame g2;
+
+        System.out.println("Test on a 3x3 game");
+        g = new TicTacToeGame();
+        g.play(0);
+        g.play(2);
+        g.play(3);
+
+
+        System.out.println("Test second  3x3 game");
+        g2 = new TicTacToeGame();
+        g2.play(0);
+        g2.play(2);
+        g2.play(3);
+
+        System.out.println("ARE THEY EQUAL?");
+        System.out.println(g.equalsWithSymmetry(g2));
     }
 
 
