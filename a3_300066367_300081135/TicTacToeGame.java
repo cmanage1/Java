@@ -163,7 +163,7 @@ public class TicTacToeGame {
 
 		// UPDATE HERE IF NEEDED
 		transformedBoard = new int[this.lines * this.columns];
-
+		count =0 ;
 		for (int i = 0; i < this.lines * this.columns; i++) {
 			transformedBoard[i] = i;
 		}
@@ -444,7 +444,7 @@ public class TicTacToeGame {
      *   true iff there are additional symmetries
      */
     public boolean hasNext(){
-		if (count ==8){
+		if (count ==8 ){
 			return false;
 		}
 		if ((count == 4) && (lines!=columns)){
@@ -458,20 +458,45 @@ public class TicTacToeGame {
      * the array "transform".
      * Requires that this.hasNext() == true
      */
-    public void next(){
-		
-		while(hasNext()){
-			if (lines!=columns){
-				count++;
-			}
-
-				
-
+    public void next(){ 
+		if (count == 0){
+			;
 		}
-
-		
-
-    }
+		if (columns!= lines){
+				if (count == 1){
+					Utils.horizontalFlip(lines, columns, transformedBoard);
+				}
+				if (count == 2) {
+					Utils.verticalFlip(lines, columns, transformedBoard);
+				}
+				if (count == 3) {
+					Utils.horizontalFlip(lines, columns, transformedBoard);
+				}
+		}else{
+			if (count == 1) {
+				Utils.rotate(lines, columns, transformedBoard);
+				}
+			if (count == 2) {
+				Utils.rotate(lines, columns, transformedBoard);
+			}
+			if (count == 3) {
+				Utils.rotate(lines, columns, transformedBoard);
+			}
+			if (count == 4) {
+				Utils.horizontalFlip(lines, columns, transformedBoard);
+			}
+			if (count == 5) {
+				Utils.rotate(lines, columns, transformedBoard);
+			}
+			if (count == 6) {
+				Utils.rotate(lines, columns, transformedBoard);
+			}
+			if (count == 7) {
+				Utils.rotate(lines, columns, transformedBoard);
+			}
+		}
+		count++;
+	}		
 
  
 
