@@ -433,7 +433,8 @@ public class TicTacToeGame {
      */
     public boolean hasNext(){
 
-    	// YOUR CODE HERE
+		// YOUR CODE HERE
+		return true;
     }
 
     /**
@@ -458,10 +459,28 @@ public class TicTacToeGame {
     *  the TicTacToeGame instance to be compared with this one
   	*/    
   	public boolean equalsWithSymmetry(TicTacToeGame other){
+		
+		other.reset();
 
-  		// YOUr CODE HERE
+		while(other.hasNext()){ 
+			this.reset();	//THIS would go back to original for each iteration 
+			other.next();
+			while (this.hasNext()){ //for one iteration of OTHER, THIS would iterate 8/4 times
+				this.next();
+				if (this.equals(other)) { //check if THIS iteration is same as OTHER
+					other.reset(); //revert arrays back to original
+					this.reset();
+					return true;
+				}
+			}
+		}
+		return false;
 
-    }
+	}
+
+		
+
+
 
      /**
 	* Returns a String representation of the game as currently trasnsformed
