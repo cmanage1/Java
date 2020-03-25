@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.io.Console;
-import java.util.Arrays; //REMOVE LATER
 
 public class Utils {
 	public static final Random generator = new Random();
@@ -43,6 +42,7 @@ public class Utils {
 
     public static void rotate(int lines, int columns, int[] transformedBoard){
 
+<<<<<<< HEAD
 		int squareroot= Math.sqrt(transformedBoard.length);
         for (int i=0 ;i<lines*columns;i++){
             transformedBoard=transformedBoard/squareroot;
@@ -54,6 +54,21 @@ public class Utils {
 
                 }
 
+=======
+      int[] temp = new int[lines*columns];
+
+      for (int i=0; i< lines*columns; i++){
+        int index = i+ 2*(i+1)- i/lines; //this determines next index to place
+        index = index % (lines*columns); //this makes sure it's never out of ranage
+
+        temp[index] =  transformedBoard[i];
+
+      }
+
+      for (int j=0; j< lines*columns; j++){
+        transformedBoard[j] = temp[j];
+      }
+>>>>>>> 75d80a66c5e8d392b6620489950ec4739c2f2e19
 
             }
           }
@@ -94,6 +109,7 @@ public class Utils {
 
     public static  void horizontalFlip(int lines, int columns, int[] transformedBoard){
 		//Flipping across horixzontal axis
+<<<<<<< HEAD
         for ( int e=0; e<lines/2;e++){
             int f = lines-e-1;
             for ( int g=0; g<columns;g++){
@@ -103,6 +119,41 @@ public class Utils {
             }
         }
 
+=======
+		int[] temp = new int[lines*columns];
+
+
+		if (lines %2 ==0){// for even lines
+			for (int i =0; i< lines*columns ; i++ ){
+				if (i>= ((lines*columns)/2) ){ //i>= 10 (start 10)
+					temp[i] = transformedBoard[i- (lines*columns/2)];
+				}
+				if (i < ((lines*columns)/2 ) ){
+					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
+				}
+			}
+		}
+
+		else{ //for non even lines
+			for (int i =0; i< lines*columns ; i++ ){
+				if ( i == (lines/2) * columns  ){
+					i+= (columns-1);//make a private class to fill this?
+				}
+
+				else if (i>= ((lines*columns)/2) ){ //i>= 10 (start 10)
+					temp[i] = transformedBoard[i- (lines*columns)/2];
+				}
+
+				else if (i < ((lines*columns)/2 ) ){
+					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
+				}
+			}
+		}
+
+		for (int i=0; i< lines*columns ; i++){ //copying to final board
+			transformedBoard[i] = temp[i];
+		}
+>>>>>>> 75d80a66c5e8d392b6620489950ec4739c2f2e19
     }
 		
 
@@ -177,8 +228,8 @@ public class Utils {
     }
 
     public static void main(String[] args){
-		int[] test;
-    	int lines, columns;
+		  //int[] test;
+    	//int lines, columns;
 
     	test(2,2);
     	test(2,3);

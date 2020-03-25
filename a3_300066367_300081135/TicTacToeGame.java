@@ -58,6 +58,7 @@ public class TicTacToeGame {
 
 
 	// ADD HERE THE REQUIRED VARIABLEs
+	private int count;
 
 
 
@@ -105,6 +106,11 @@ public class TicTacToeGame {
 		gameState = GameState.PLAYING;
 
 		// UPDATE HERE IF NEEDED
+		transformedBoard = new int[this.lines*this.columns];
+
+		for (int i=0; i< this.lines*this.columns;i++){
+			transformedBoard[i]= i;
+		}
 	}
 
 
@@ -156,6 +162,11 @@ public class TicTacToeGame {
 		}
 
 		// UPDATE HERE IF NEEDED
+		transformedBoard = new int[this.lines * this.columns];
+
+		for (int i = 0; i < this.lines * this.columns; i++) {
+			transformedBoard[i] = i;
+		}
 	}
 
 
@@ -420,9 +431,10 @@ public class TicTacToeGame {
 	 */
 
     public void reset(){
- 
-    	// YOUR CODE HERE
-
+ 		count = 0;
+    	for (int i = 0; i < this.lines * this.columns; i++) {
+			transformedBoard[i] = i;
+		}
     }
 
     /**
@@ -432,8 +444,13 @@ public class TicTacToeGame {
      *   true iff there are additional symmetries
      */
     public boolean hasNext(){
-
-    	// YOUR CODE HERE
+		if (count ==8){
+			return false;
+		}
+		if ((count == 4) && (lines!=columns)){
+			return false;
+		}
+		return true;
     }
 
     /**
@@ -442,8 +459,17 @@ public class TicTacToeGame {
      * Requires that this.hasNext() == true
      */
     public void next(){
+		
+		while(hasNext()){
+			if (lines!=columns){
+				count++;
+			}
 
-    	// YOUR CODE HERE
+				
+
+		}
+
+		
 
     }
 
@@ -458,11 +484,38 @@ public class TicTacToeGame {
     *  the TicTacToeGame instance to be compared with this one
   	*/    
   	public boolean equalsWithSymmetry(TicTacToeGame other){
+		
+		if (other == null){
+			return false;
+		}
+		if(this.columns != this.lines && other.columns!= other.lines){
+			return false;
+		}
+		other.reset();
+		this.reset();
+		
+		while (hasNext()) { // for 8/4 iterations
+			this.next();
+			if (transformedBoardsEqual(other.transformedBoard)) { //check if THIS iteration is same as OTHER
+				other.reset(); //revert arrays back to original
+				this.reset();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean transformedBoardsEqual(int[] otherBoard){
+		for (int i=0; i< otherBoard.length; i++){
+			if (transformedBoard[i] != otherBoard[i]){
+				return false;
+			}
+		}
+		return true;
+	}
 
-  		// YOUr CODE HERE
 
-    }
-
+		
      /**
 	* Returns a String representation of the game as currently trasnsformed
 	* 
