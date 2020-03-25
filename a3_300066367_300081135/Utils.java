@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.io.Console;
-import java.util.Arrays; //REMOVE LATER
 
 public class Utils {
 	public static final Random generator = new Random();
@@ -43,19 +42,19 @@ public class Utils {
 
     public static void rotate(int lines, int columns, int[] transformedBoard){
 
-		int[] temp = new int[lines*columns];
+      int[] temp = new int[lines*columns];
 
-		for (int i=0; i< lines*columns; i++){
-			int index = i+ 2*(i+1)- i/lines; //this determines next index to place
-			index = index%(lines*columns); //this makes sure it's never out of ranage
+      for (int i=0; i< lines*columns; i++){
+        int index = i+ 2*(i+1)- i/lines; //this determines next index to place
+        index = index % (lines*columns); //this makes sure it's never out of ranage
 
-			temp[index] =  transformedBoard[i];
+        temp[index] =  transformedBoard[i];
 
-		}
+      }
 
-		for (int j=0; j< lines*columns; j++){
-			transformedBoard[j] = temp[j];
-		}
+      for (int j=0; j< lines*columns; j++){
+        transformedBoard[j] = temp[j];
+      }
 
 
     }
@@ -122,7 +121,6 @@ public class Utils {
 				else if (i < ((lines*columns)/2 ) ){
 					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
 				}
-				System.out.println("i= " +i  +" Value: " + temp[i]);
 			}
 		}
 
@@ -202,7 +200,7 @@ public class Utils {
     }
 
     public static void main(String[] args){
-		int[] test;
+		  int[] test;
     	int lines, columns;
 
     	test(2,2);

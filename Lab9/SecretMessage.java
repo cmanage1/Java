@@ -9,15 +9,14 @@ public class SecretMessage {
 
         InputStreamReader input = new InputStreamReader(new FileInputStream(inputFilem));
         
-
-        OutputStream output = new FileOutputStream("data");
-        
         File f = new File(outputFile);
         OutputStream output = new FileOutputStream(f);
 
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(outputFile));
 
         String encryptedMessege= new String();
+
+        Cipher cipher = Cipher.getInstance("AES");
         
         out.write(encryptedMessege);
 
