@@ -43,22 +43,21 @@ public class Utils {
 
     public static void rotate(int lines, int columns, int[] transformedBoard){
 
-		int[] temp = new int[lines*columns];
+		int squareroot= Math.sqrt(transformedBoard.length);
+        for (int i=0 ;i<lines*columns;i++){
+            transformedBoard=transformedBoard/squareroot;
+        }
 
-		for (int i=0; i< lines*columns; i++){
-			int index = i+ 2*(i+1)- i/lines; //this determines next index to place
-			index = index%(lines*columns); //this makes sure it's never out of ranage
+            for(int j=transformedBoard.length-1; j<squareroot ;j--){
+                for (int k=0 ; k<squareroot ; k++){
+                    transformedBoard[i]=k;
 
-			temp[index] =  transformedBoard[i];
-
-		}
-
-		for (int j=0; j< lines*columns; j++){
-			transformedBoard[j] = temp[j];
-		}
+                }
 
 
-    }
+            }
+          }
+
 
     /**
      * This method does an horizontal symmetry on array of size lines * columns referenced
@@ -95,41 +94,17 @@ public class Utils {
 
     public static  void horizontalFlip(int lines, int columns, int[] transformedBoard){
 		//Flipping across horixzontal axis
-		int[] temp = new int[lines*columns];
+        for ( int e=0; e<lines/2;e++){
+            int f = lines-e-1;
+            for ( int g=0; g<columns;g++){
+                int h = transformedBoard[e*columns+g];
+                transformedBoard[e*lines+g] = transformedBoard [f*columns+g];
+                transformedBoard[f*columns+g]=h;
+            }
+        }
 
-
-		if (lines %2 ==0){// for even lines
-			for (int i =0; i< lines*columns ; i++ ){
-				if (i>= ((lines*columns)/2) ){ //i>= 10 (start 10)
-					temp[i] = transformedBoard[i- (lines*columns/2)];
-				}
-				if (i < ((lines*columns)/2 ) ){
-					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
-				}
-			}
-		}
-
-		else{ //for non even lines
-			for (int i =0; i< lines*columns ; i++ ){
-				if ( i == (lines/2) * columns  ){
-					i+= (columns-1);//make a private class to fill this?
-				}
-
-				else if (i>= ((lines*columns)/2) ){ //i>= 10 (start 10)
-					temp[i] = transformedBoard[i- (lines*columns)/2];
-				}
-
-				else if (i < ((lines*columns)/2 ) ){
-					temp[i] = transformedBoard[i+ (lines*columns)/2 ];
-				}
-				System.out.println("i= " +i  +" Value: " + temp[i]);
-			}
-		}
-
-		for (int i=0; i< lines*columns ; i++){ //copying to final board
-			transformedBoard[i] = temp[i];
-		}
     }
+		
 
    /**
      * This method does an vertical symmetry on array of size lines * columns referenced
