@@ -443,10 +443,10 @@ public class TicTacToeGame {
      *   true iff there are additional symmetries
      */
     public boolean hasNext(){
-		if (count ==7 ){
+		if (count ==8 ){
 			return false;
 		}
-		if ((count == 3) && (lines!=columns)){
+		if ((count == 4) && (lines!=columns)){
 			return false;
 		}
 		return true;
