@@ -46,7 +46,7 @@ public class Utils {
         int [][] matrix= new int[lines][columns];
         int squareRoot=lines;
         for (int i=0;i<squareRoot/2;i++){
-            for (int j=i; j<squareRoot-i-1;j++){
+            for (int j=i; j<lines;j++){
                 int tempArray= matrix[i][j];
                 matrix[i][j]=matrix[squareRoot-1-j][i];
                 matrix[squareRoot-1-j][i]=matrix[squareRoot-1-i][squareRoot-1-j];
