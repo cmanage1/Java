@@ -180,7 +180,7 @@ public class MyTesting{
         g = new TicTacToeGame();
         g.play(0);
         g.play(2);
-        g.play(3);
+        g.play(4);
 
 
         System.out.println("Test second  3x3 game");
