@@ -443,10 +443,10 @@ public class TicTacToeGame {
      *   true iff there are additional symmetries
      */
     public boolean hasNext(){
-		if (count ==8 ){
+		if (count ==7 ){
 			return false;
 		}
-		if ((count == 4) && (lines!=columns)){
+		if ((count == 3) && (lines!=columns)){
 			return false;
 		}
 		return true;
@@ -507,8 +507,8 @@ public class TicTacToeGame {
 		if (other == null){
 			return false;
 		}
-		while ( this.hasNext()) { // for 8/4 iterations
-			this.next(); //NEXT DOES NOT CHANGE ANYTHING IN transformedBoard???
+		while ( other.hasNext()) { // for 8/4 iterations
+			other.next(); //NEXT DOES NOT CHANGE ANYTHING IN transformedBoard???
 			if (transformedBoardsEquals(other.transformedBoard)) { //check if THIS iteration is same as OTHER
 				return true;
 			}

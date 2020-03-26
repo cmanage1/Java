@@ -35,11 +35,11 @@ public class TicTacToe{
                 System.out.println("Too many arguments. Only the first 3 are used.");
             } 
 
-        } catch(NumberFormatException e){ //CHANGE LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        } catch(NumberFormatException e){ 
             System.out.println("Invalid argument, using default...");
-            lines   = 4;
+            lines   = 3;
             columns  = 3;
-            win = 2;
+            win = 3;
         }
  
 
