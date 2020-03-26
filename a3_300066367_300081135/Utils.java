@@ -41,9 +41,9 @@ public class Utils {
 
 
     public static void rotate(int lines, int columns, int[] transformedBoard){
-<<<<<<< HEAD
 
-        int matrix[][];
+
+        int [][] matrix= new int[lines][columns];
         int squareRoot=lines;
         for (int i=0;i<squareRoot/2;i++){
             for (int j=i; j<squareRoot-i-1;j++){
@@ -55,25 +55,6 @@ public class Utils {
             }
         }
     }
-=======
-        /*
-		int squareroot= Math.sqrt(transformedBoard.length);
-        for (int i=0 ;i<lines*columns;i++){
-            transformedBoard=transformedBoard/squareroot;
-        }
-
-            for(int j=transformedBoard.length-1; j<squareroot ;j--){
-                for (int k=0 ; k<squareroot ; k++){
-                    transformedBoard[i]=k;
-
-                }
-
-
-            }
-        */
-    }
-        
->>>>>>> 89ef59aec81ce8b6c9dc9e067a3510f7c47938ac
 
         
     /**
@@ -111,10 +92,7 @@ public class Utils {
 
     public static void horizontalFlip(int lines, int columns, int[] transformedBoard){
 		//Flipping across horixzontal axis
-<<<<<<< HEAD
 
-=======
->>>>>>> 89ef59aec81ce8b6c9dc9e067a3510f7c47938ac
         for ( int e=0; e<lines/2;e++){
             int f = lines-e-1;
             for ( int g=0; g<columns;g++){
@@ -123,10 +101,7 @@ public class Utils {
                 transformedBoard[f*columns+g]=h;
             }
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 89ef59aec81ce8b6c9dc9e067a3510f7c47938ac
     }
 		
 
