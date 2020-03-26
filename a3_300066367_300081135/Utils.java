@@ -41,6 +41,7 @@ public class Utils {
 
 
     public static void rotate(int lines, int columns, int[] transformedBoard){
+<<<<<<< HEAD
 
         int matrix[][];
         int squareRoot=lines;
@@ -54,6 +55,25 @@ public class Utils {
             }
         }
     }
+=======
+        /*
+		int squareroot= Math.sqrt(transformedBoard.length);
+        for (int i=0 ;i<lines*columns;i++){
+            transformedBoard=transformedBoard/squareroot;
+        }
+
+            for(int j=transformedBoard.length-1; j<squareroot ;j--){
+                for (int k=0 ; k<squareroot ; k++){
+                    transformedBoard[i]=k;
+
+                }
+
+
+            }
+        */
+    }
+        
+>>>>>>> 89ef59aec81ce8b6c9dc9e067a3510f7c47938ac
 
         
     /**
@@ -87,11 +107,14 @@ public class Utils {
      *  the number of columns in the game
      * @param transformedBoard
      *  Reference to a 1 dimentional array of size columns x lines
-     */
+     **/
 
-    public static  void horizontalFlip(int lines, int columns, int[] transformedBoard){
+    public static void horizontalFlip(int lines, int columns, int[] transformedBoard){
 		//Flipping across horixzontal axis
+<<<<<<< HEAD
 
+=======
+>>>>>>> 89ef59aec81ce8b6c9dc9e067a3510f7c47938ac
         for ( int e=0; e<lines/2;e++){
             int f = lines-e-1;
             for ( int g=0; g<columns;g++){
@@ -100,6 +123,10 @@ public class Utils {
                 transformedBoard[f*columns+g]=h;
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89ef59aec81ce8b6c9dc9e067a3510f7c47938ac
     }
 		
 
