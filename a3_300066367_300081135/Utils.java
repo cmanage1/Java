@@ -44,37 +44,13 @@ public class Utils {
 
 
         int [][] matrix= new int[lines][columns];
-        int count = 0;
-
-        for (int i = 0; i < lines; i++) { //Converting to 2D array
-            for (int j = 0; j < columns; j++) {
-                if (count == transformedBoard.length)
-                    break;
-                matrix[i][j] = transformedBoard[count];
-                count++;
-            }
-        }
-
         int squareRoot=lines;
         for (int i=0;i<squareRoot/2;i++){
             for (int j=i; j<lines;j++){
                 int tempArray= matrix[i][j];
-                matrix[i][j]=matrix[squareRoot-1-j][i];
-                matrix[squareRoot-1-j][i]=matrix[squareRoot-1-i][squareRoot-1-j];
-                matrix[squareRoot-1-i][squareRoot-1-j]=matrix[j][squareRoot-1-i];
-                matrix[j][squareRoot-1-i]=tempArray;
+                matrix[i][j]=matrix[j][i]
+                matrix[i][j]=tempArray
             }
-        }
-        
-        count = 0;
-        for (int i = 0; i < lines; i++) { //Copying 2d arr contents into transformedBoard arr
-            for (int j = 0; j < columns; j++) {
-                if (count == transformedBoard.length)
-                    break;
-                transformedBoard[count] = matrix[i][j];
-                count++;
-            }
-
         }
     }
 
