@@ -43,8 +43,39 @@ public class Utils {
     public static void rotate(int lines, int columns, int[] transformedBoard){
 
 
-            // YOUR CODE HERE
+        int[][] matrix = new int[lines][columns];
+        int count = 0;
 
+        for (int i = 0; i < lines; i++) { // Converting to 2D array
+            for (int j = 0; j < columns; j++) {
+                if (count == transformedBoard.length)
+                    break;
+                matrix[i][j] = transformedBoard[count];
+                count++;
+            }
+        }
+
+        int squareRoot = lines;
+        for (int i = 0; i < squareRoot / 2; i++) {
+            for (int j = i; j < squareRoot - i - 1; j++) {
+                int tempArray = matrix[i][j];
+                matrix[i][j] = matrix[squareRoot - 1 - j][i];
+                matrix[squareRoot - 1 - j][i] = matrix[squareRoot - 1 - i][squareRoot - 1 - j];
+                matrix[squareRoot - 1 - i][squareRoot - 1 - j] = matrix[j][squareRoot - 1 - i];
+                matrix[j][squareRoot - 1 - i] = tempArray;
+            }
+        }
+
+        count = 0;
+        for (int i = 0; i < lines; i++) { // Copying 2d arr contents into transformedBoard arr
+            for (int j = 0; j < columns; j++) {
+                if (count == transformedBoard.length)
+                    break;
+                transformedBoard[count] = matrix[i][j];
+                count++;
+            }
+
+        }
     }
 
     /**
@@ -82,7 +113,14 @@ public class Utils {
 
     public static  void horizontalFlip(int lines, int columns, int[] transformedBoard){
 
-        // YOUR CODE HERE
+        for (int e = 0; e < lines / 2; e++) {
+            int f = lines - e - 1;
+            for (int g = 0; g < columns; g++) {
+                int h = transformedBoard[e * columns + g];
+                transformedBoard[e * lines + g] = transformedBoard[f * columns + g];
+                transformedBoard[f * columns + g] = h;
+            }
+        }
     }
 
    /**
@@ -119,7 +157,14 @@ public class Utils {
 
     public static  void verticalFlip(int lines, int columns, int[] transformedBoard){
  
-        // YOUR CODE HERE
+        for (int a = 0; a < columns / 2; a++) {
+           int b = columns - a - 1;
+           for (int c = 0; c < lines; c++) {
+               int d = transformedBoard[a + (columns * c)];
+               transformedBoard[a + (columns * c)] = transformedBoard[b + (columns * c)];
+               transformedBoard[b + (columns * c)] = d;
+           }
+       }
 
     }
 
