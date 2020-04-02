@@ -58,6 +58,18 @@ public class TicTacToeGame {
 
 
 	// ADD HERE THE REQUIRED VARIABLEs
+	private static final Transformation[] allTransformationsSquare = { Transformation.ID, Transformation.ROT,
+			Transformation.ROT, Transformation.ROT, Transformation.HSYM, Transformation.ROT, Transformation.ROT,
+			Transformation.ROT };
+
+	private static final Transformation[] allTransformationsNonSquare = { Transformation.ID, Transformation.HSYM,
+			Transformation.VSYM, Transformation.HSYM };
+
+	private Transformation[] allTransformations;
+
+	private int currentTransformation;
+
+	private int[] transformedBoard;
 
 
 
@@ -103,8 +115,12 @@ public class TicTacToeGame {
 		}
 		level = 0;
 		gameState = GameState.PLAYING;
-
-		// UPDATE HERE IF NEEDED
+		if (lines == columns) {
+			allTransformations = allTransformationsSquare;
+		} else {
+			allTransformations = allTransformationsNonSquare;
+		}
+		transformedBoard = new int[lines * columns];
 	}
 
 
@@ -143,6 +159,8 @@ public class TicTacToeGame {
 			board[i] = base.board[i];
 		}
 		
+		// allTransformations doesn't change so we can share the reference here
+		allTransformations = base.allTransformations;
 
 		level = base.level+1;
 
@@ -156,6 +174,7 @@ public class TicTacToeGame {
 		}
 
 		// UPDATE HERE IF NEEDED
+		reset();
 	}
 
 
