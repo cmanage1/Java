@@ -55,11 +55,10 @@ public class TicTacToeGame {
      * transformedBoard is "protected" in anticipation of Q2
      */
 	protected int[] transformedBoard;
-	private int count;
-	private Transformation[] stage;
 
 
 	// ADD HERE THE REQUIRED VARIABLEs
+
 
 
    /**
@@ -106,14 +105,6 @@ public class TicTacToeGame {
 		gameState = GameState.PLAYING;
 
 		// UPDATE HERE IF NEEDED
-		this.count=0;
-		transformedBoard = new int[this.lines*this.columns];
-		count=0;
-		for (int i=0; i< this.lines*this.columns;i++){
-			transformedBoard[i]= i;
-		}
-		stage =  new Transformation[]{Transformation.ID, Transformation.ROT, Transformation.ROT, Transformation.HSYM, 
-			Transformation.ROT, Transformation.ROT, Transformation.ROT};
 	}
 
 
@@ -164,12 +155,7 @@ public class TicTacToeGame {
 			setGameState(next);
 		}
 
-		this.count = 0;
-		transformedBoard = new int[this.lines*this.columns];
-		count=0;
-		for (int i=0; i< this.lines*this.columns;i++){
-			transformedBoard[i]= i;
-		}
+		// UPDATE HERE IF NEEDED
 	}
 
 
@@ -434,10 +420,9 @@ public class TicTacToeGame {
 	 */
 
     public void reset(){
-		count = 0;
-		for (int i = 0; i < this.lines * this.columns; i++) {
-			transformedBoard[i] = i;
-		}
+ 
+    	currentTransformation = -1;
+		transformedBoard = new int[lines * columns];
 
     }
 
@@ -448,14 +433,9 @@ public class TicTacToeGame {
      *   true iff there are additional symmetries
      */
     public boolean hasNext(){
-    	if (count == 8 ){
-			return false;
-		}
-		if ((count == 4) && (lines!=columns)){
-			return false;
-		}
-		return true;
-    }
+
+    	return currentTransformation < (allTransformations.length - 1);
+	}
 
     /**
      * computes the next symmetries and stores it in
@@ -464,24 +444,34 @@ public class TicTacToeGame {
      */
     public void next(){
 
-		switch (stage[count]){
+    	if (!hasNext()) {
+			throw new IllegalStateException("No next transformation");
+		}
+		currentTransformation++;
+		transform(allTransformations[currentTransformation]);
+    }
+
+	private void transform(Transformation type) {
+
+		switch (type) {
 			case ID:
-				count++;
+				for (int i = 0; i < board.length; i++) {
+					transformedBoard[i] = i;
+				}
 				break;
 			case ROT:
 				Utils.rotate(lines, columns, transformedBoard);
-				count++;
-				break;
-			case HSYM:
-				Utils.horizontalFlip(lines, columns, transformedBoard);
-				count++;
 				break;
 			case VSYM:
 				Utils.verticalFlip(lines, columns, transformedBoard);
-				count++;
 				break;
+			case HSYM:
+				Utils.horizontalFlip(lines, columns, transformedBoard);
+				break;
+			default:
+				System.out.println("Unknow type: " + type);
 		}
-    }
+	}
 
   /**
 	* Compares this instance of the game with the
@@ -493,28 +483,30 @@ public class TicTacToeGame {
   	*/    
   	public boolean equalsWithSymmetry(TicTacToeGame other){
 
-		if (other == null) {
-				return false;
+  		if (other == null) {
+			return false;
+		}
+		if ((level != other.level) || (lines != other.lines) || (columns != other.columns)
+				|| (sizeWin != other.sizeWin)) {
+			return false;
 		}
 
-		while (other.hasNext()) { // for 8/4 iterations
-			other.next(); // NEXT DOES NOT CHANGE ANYTHING IN transformedBoard???
-			if (transformedBoardsEquals(other.transformedBoard)) { // check if THIS iteration is same as OTHER
+		reset();
+		while (hasNext()) {
+			next();
+			boolean different = false;
+			for (int i = 0; i < transformedBoard.length; i++) {
+				if (board[transformedBoard[i]] != other.board[i]) {
+					different = true;
+					break;
+				}
+			}
+			if (!different)
 				return true;
-			}
 		}
-
 		return false;
-	}
-	
-	private boolean transformedBoardsEquals(int[] otherBoard) {
-		for (int i = 0; i < otherBoard.length; i++) {
-			if (transformedBoard[i] != otherBoard[i]) {
-				return false;
-			}
-		}
-		return true;
-	}
+
+    }
 
      /**
 	* Returns a String representation of the game as currently trasnsformed
