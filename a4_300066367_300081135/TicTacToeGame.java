@@ -69,7 +69,6 @@ public class TicTacToeGame {
 
 	private int currentTransformation;
 
-	private int[] transformedBoard;
 
 
 
